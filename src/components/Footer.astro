@@ -1,0 +1,200 @@
+---
+interface Props {
+  phone?: string;
+  phoneDisplay?: string;
+  whatsappUrl?: string;
+}
+
+const {
+  phone = "+5527992753921",
+  phoneDisplay = "(27) 99275-3921",
+  whatsappUrl = "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho."
+} = Astro.props;
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="ftr" id="contato">
+  <div class="wrap">
+    <div class="ftr-cols">
+      <div>
+        <a class="brand" href="/">
+          <span class="mark" aria-hidden="true">BB</span>
+          <span>
+            <b>Dr. Bernardo Barroso</b>
+            <small>CRM 8842-ES</small>
+          </span>
+        </a>
+        <p class="ftr-desc">
+          Ortopedia, traumatologia e cirurgia do joelho. Artroscopia, LCA, menisco, cartilagem e prótese de joelho.
+        </p>
+      </div>
+
+      <nav aria-labelledby="ftr-trat">
+        <h2 id="ftr-trat">Tratamentos</h2>
+        <ul>
+          <li><a href="/ligamento-cruzado/">Ligamento Cruzado Anterior</a></li>
+          <li><a href="/acido-hialuronico/">Infiltração de Ácido Hialurônico</a></li>
+          <li><a href="/protese-de-joelho/">Prótese de Joelho</a></li>
+        </ul>
+      </nav>
+
+      <nav aria-labelledby="ftr-nav">
+        <h2 id="ftr-nav">Navegação</h2>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/#sobre">Sobre o médico</a></li>
+          <li><a href="/#tratamentos">Tratamentos</a></li>
+          <li><a href="/#convenios">Convênios</a></li>
+        </ul>
+      </nav>
+
+      <div>
+        <h2>Atendimento</h2>
+        <ul>
+          <li>
+            <p>
+              Vitória · Serra · Vila Velha<br />
+              Espírito Santo, Brasil
+            </p>
+          </li>
+          <li><a href={`tel:${phone}`}>{phoneDisplay}</a></li>
+          <li>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener"
+              data-cta="whatsapp-footer"
+            >
+              WhatsApp da secretaria
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="legal">
+      <p>
+        O conteúdo deste site tem caráter informativo e não substitui a consulta médica. Diagnóstico, indicação de tratamento e resultados são individuais e devem ser avaliados presencialmente. Responsável técnico: Dr. Bernardo Garcia Barroso — CRM 8842-ES.
+      </p>
+      <p>© {currentYear} Dr. Bernardo Barroso</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .ftr {
+    background: var(--bg-2);
+    border-top: 1px solid var(--line);
+    padding: clamp(44px, 5vw, 76px) var(--pad) 26px;
+  }
+
+  .ftr > .wrap {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 3.5vw, 44px);
+  }
+
+  .ftr-cols {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+    gap: clamp(24px, 3vw, 40px);
+  }
+
+  .ftr-desc {
+    margin-top: 12px;
+    max-width: 34ch;
+    font-size: 0.875rem;
+    color: var(--ink-3);
+  }
+
+  .ftr-cols h2,
+  .ftr-cols h3 {
+    font-size: 0.69rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-5);
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  .ftr-cols ul {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .ftr-cols a {
+    font-size: 0.875rem;
+    color: var(--ink-2);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .ftr-cols a:hover {
+    color: var(--brand);
+  }
+
+  .ftr-cols p {
+    font-size: 0.875rem;
+    color: var(--ink-3);
+    margin: 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .brand:hover {
+    color: inherit;
+  }
+
+  .mark {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border: 1.5px solid var(--brand);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font: 700 0.94rem/1 var(--display);
+    color: var(--brand);
+  }
+
+  .brand b {
+    font: 600 0.94rem/1.2 var(--display);
+    display: block;
+  }
+
+  .brand small {
+    font-size: 0.69rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  .legal {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding-top: 20px;
+    border-top: 1px solid var(--line);
+    font-size: 0.78rem;
+    line-height: 1.6;
+    color: var(--ink-4);
+  }
+
+  .legal p {
+    max-width: 74ch;
+    margin: 0;
+  }
+</style>

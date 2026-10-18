@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  title="Mensagem enviada | Dr. Bernardo Barroso"
+  description="Mensagem enviada com sucesso. A secretaria retornará em horário comercial."
+  canonical="https://drbernardobarroso.com.br/obrigado/"
+  robots="noindex,follow"
+  whatsappUrl="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho."
+>
+  <main id="main">
+    <section class="hero" style="min-height:60vh;place-items:center">
+      <div class="wrap stack" style="max-width:640px;text-align:center;align-items:center;gap:20px">
+        <h1>Recebemos seu contato</h1>
+        <p class="lede" style="margin-inline:auto">A secretaria retorna em horário comercial com os horários disponíveis. Se preferir, ligue para (27) 99275-3921.</p>
+        <a class="btn" href="/">Voltar para a página inicial</a>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); align-items:center; gap:clamp(32px,5vw,64px); border-top:0; background:radial-gradient(120% 90% at 78% 18%,#10262c 0%,#0a141b 45%,var(--bg) 100%); }
+</style>

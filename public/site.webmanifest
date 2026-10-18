@@ -1,0 +1,16 @@
+{
+  "name": "Dr. Bernardo Barroso — Cirurgia do Joelho",
+  "short_name": "Dr. Bernardo Barroso",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#060b10",
+  "theme_color": "#060b10",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

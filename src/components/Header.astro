@@ -1,0 +1,327 @@
+---
+import Button from './Button.astro';
+
+interface Props {
+  phone?: string;
+  phoneDisplay?: string;
+  whatsappUrl?: string;
+  currentPath?: string;
+}
+
+const {
+  phone = "+5527992753921",
+  phoneDisplay = "(27) 99275-3921",
+  whatsappUrl = "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho.",
+  currentPath = Astro.url.pathname,
+} = Astro.props;
+---
+
+<header class="hdr">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="mark" aria-hidden="true">BB</span>
+      <span>
+        <b>Dr. Bernardo Barroso</b>
+        <small>Cirurgia do Joelho · CRM 8842-ES</small>
+      </span>
+    </a>
+
+    <button class="burger" type="button" aria-expanded="false" aria-controls="nav" aria-label="Abrir menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <path d="M3 6h18M3 12h18M3 18h18" />
+      </svg>
+    </button>
+
+    <nav class="nav" id="nav" aria-label="Principal">
+      <a href="/" aria-current={currentPath === '/' ? 'page' : undefined}>Home</a>
+      <a href="/#sobre">Sobre</a>
+      <details class="menu">
+        <summary role="button">
+          Tratamentos
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+            <path d="M5 9l7 7 7-7" />
+          </svg>
+        </summary>
+        <div class="menu-list">
+          <a href="/#tratamentos">Todos os tratamentos</a>
+          <a href="/ligamento-cruzado/" aria-current={currentPath.startsWith('/ligamento-cruzado') ? 'page' : undefined}>Ligamento Cruzado Anterior</a>
+          <a href="/acido-hialuronico/" aria-current={currentPath.startsWith('/acido-hialuronico') ? 'page' : undefined}>Infiltração Ácido Hialurônico</a>
+          <a href="/protese-de-joelho/" aria-current={currentPath.startsWith('/protese-de-joelho') ? 'page' : undefined}>Prótese de Joelho</a>
+        </div>
+      </details>
+      <a href="/#convenios">Convênios</a>
+      <a href="/#contato">Contato</a>
+      <a class="tel" href={`tel:${phone}`}>{phoneDisplay}</a>
+      <Button
+        href={whatsappUrl}
+        size="sm"
+        dataCta="whatsapp-header"
+      >
+        Agendar
+      </Button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const b = document.querySelector('.burger') as HTMLButtonElement | null;
+  const n = document.getElementById('nav') as HTMLElement | null;
+
+  function mob() {
+    return window.matchMedia('(max-width:900px)').matches;
+  }
+
+  function setNavState(open: boolean) {
+    if (!b || !n) return;
+    b.setAttribute('aria-expanded', open ? 'true' : 'false');
+    n.hidden = !open;
+  }
+
+  if (b && n) {
+    if (mob()) setNavState(false);
+    b.addEventListener('click', () => {
+      setNavState(n.hidden);
+    });
+    window.addEventListener('resize', () => {
+      n.hidden = mob() ? b.getAttribute('aria-expanded') !== 'true' : false;
+    });
+  }
+
+  var m=document.querySelector('.menu');
+  if(m){
+    var s=m.querySelector('summary'),t;
+    function desk(){return window.matchMedia('(hover:hover) and (min-width:901px)').matches}
+    m.addEventListener('mouseenter',function(){if(desk()){clearTimeout(t);m.setAttribute('open','')}});
+    m.addEventListener('mouseleave',function(){if(desk()){t=setTimeout(function(){m.removeAttribute('open')},200)}});
+    s.addEventListener('click',function(e){if(desk()){e.preventDefault();location.href='/#tratamentos'}});
+    m.addEventListener('focusin',function(){if(desk())m.setAttribute('open','')});
+    m.addEventListener('focusout',function(){setTimeout(function(){if(!m.contains(document.activeElement))m.removeAttribute('open')},0)});
+    document.addEventListener('click',function(e){if(!m.contains(e.target))m.removeAttribute('open')});
+  }
+</script>
+
+<style>
+  .hdr {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(6, 11, 16, 0.86);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .hdr > .wrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 14px var(--pad);
+    max-width: none;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: inherit;
+  }
+
+  .brand:hover {
+    color: inherit;
+  }
+
+  .mark {
+    width: 34px;
+    height: 34px;
+    flex: none;
+    border: 1.5px solid var(--brand);
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font: 700 0.94rem/1 var(--display);
+    color: var(--brand);
+  }
+
+  .brand b {
+    font: 600 0.94rem/1.2 var(--display);
+    display: block;
+  }
+
+  .brand small {
+    font-size: 0.69rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: clamp(10px, 1.6vw, 24px);
+    font-size: 0.875rem;
+  }
+
+  .nav a {
+    color: var(--ink-2);
+  }
+
+  .nav a:hover,
+  .nav a[aria-current] {
+    color: var(--brand);
+  }
+
+  .nav a[aria-current] {
+    font-weight: 500;
+  }
+
+  .tel {
+    color: var(--ink-2) !important;
+  }
+
+  .menu {
+    position: relative;
+  }
+
+  .menu > summary {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    list-style: none;
+    color: var(--ink-2);
+  }
+
+  .menu > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .menu > summary:hover,
+  .menu[open] > summary {
+    color: var(--brand);
+  }
+
+  .menu > summary svg {
+    width: 10px;
+    height: 10px;
+    color: var(--ink-4);
+    transition: transform 0.18s ease;
+  }
+
+  .menu[open] > summary svg {
+    transform: rotate(180deg);
+  }
+
+  .menu-list {
+    position: absolute;
+    top: calc(100% + 12px);
+    left: -12px;
+    min-width: 256px;
+    padding: 8px;
+    border-radius: var(--r);
+    border: 1px solid var(--line-2);
+    background: rgba(8, 15, 21, 0.98);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 60;
+  }
+
+  .menu-list::before{content:"";position:absolute;left:0;right:0;top:-14px;height:14px}
+
+  .menu-list a {
+    display: block;
+    padding: 11px 15px;
+    border-radius: 9px;
+    color: var(--ink-2);
+    font-size: 0.84rem;
+    line-height: 1.35;
+  }
+
+  .menu-list a:hover {
+    background: rgba(79, 209, 197, 0.1);
+    color: var(--brand);
+  }
+
+  .menu-list a[aria-current] {
+    background: rgba(79, 209, 197, 0.09);
+    color: var(--brand);
+  }
+
+  .burger {
+    display: none;
+    background: none;
+    border: 1px solid var(--line-2);
+    border-radius: 10px;
+    color: var(--ink);
+    width: 44px;
+    height: 44px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .burger svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  @media (max-width: 900px) {
+    .burger {
+      display: inline-flex;
+    }
+
+    .nav {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      padding: 12px var(--pad) 22px;
+      background: rgba(6, 11, 16, 0.99);
+      border-bottom: 1px solid var(--line);
+      font-size: 1rem;
+    }
+
+    .nav[hidden] {
+      display: none;
+    }
+
+    .nav > a {
+      padding: 13px 2px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu > summary {
+      padding: 13px 2px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .menu-list {
+      position: static;
+      min-width: 0;
+      border: 0;
+      background: none;
+      box-shadow: none;
+      padding: 4px 0 4px 12px;
+    }
+
+    .nav :global(.btn) {
+      margin-top: 14px;
+    }
+
+    .hdr .tel {
+      display: none;
+    }
+  }
+
+  @media print {
+    .hdr {
+      display: none;
+    }
+  }
+</style>

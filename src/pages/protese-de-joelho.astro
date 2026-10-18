@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Physician","@id":"https://drbernardobarroso.com.br/#physician","name":"Dr. Bernardo Garcia Barroso","medicalSpecialty":"Orthopedic","image":"https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp","url":"https://drbernardobarroso.com.br/","telephone":"+5527992753921","identifier":"CRM 8842-ES","description":"Ortopedista especialista em cirurgias e tratamentos do joelho: artroscopia, reconstrução de LCA, menisco, cartilagem, infiltração de ácido hialurônico e prótese de joelho.","areaServed":[{"@type":"City","name":"Vitória"},{"@type":"City","name":"Serra"},{"@type":"City","name":"Vila Velha"}],"address":{"@type":"PostalAddress","addressLocality":"Vitória","addressRegion":"ES","addressCountry":"BR"},"memberOf":[{"@type":"Organization","name":"Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)"},{"@type":"Organization","name":"Sociedade Brasileira de Cirurgia do Joelho (SBCJ)"}],"availableService":[{"@type":"MedicalProcedure","name":"Reconstrução do Ligamento Cruzado Anterior (LCA)","url":"https://drbernardobarroso.com.br/ligamento-cruzado/"},{"@type":"MedicalProcedure","name":"Infiltração de ácido hialurônico no joelho (viscossuplementação)","url":"https://drbernardobarroso.com.br/acido-hialuronico/"},{"@type":"MedicalProcedure","name":"Prótese de joelho (artroplastia)","url":"https://drbernardobarroso.com.br/protese-de-joelho/"}]},{"@type":"WebSite","@id":"https://drbernardobarroso.com.br/#website","url":"https://drbernardobarroso.com.br/","name":"Dr. Bernardo Barroso — Cirurgia do Joelho","inLanguage":"pt-BR","publisher":{"@id":"https://drbernardobarroso.com.br/#physician"}},{"@type":["MedicalWebPage","WebPage"],"@id":"https://drbernardobarroso.com.br/protese-de-joelho/#page","url":"https://drbernardobarroso.com.br/protese-de-joelho/","name":"Prótese de Joelho: tudo o que você precisa saber antes da cirurgia","description":"Indicações, tipos de prótese, tempo de recuperação e dúvidas frequentes sobre a artroplastia de joelho.","inLanguage":"pt-BR","isPartOf":{"@id":"https://drbernardobarroso.com.br/#website"},"dateModified":"2026-09-12","about":{"@type":"MedicalProcedure","name":"Artroplastia total de joelho","procedureType":"Surgical"},"author":{"@id":"https://drbernardobarroso.com.br/#physician"},"reviewedBy":{"@id":"https://drbernardobarroso.com.br/#physician"},"speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lede"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://drbernardobarroso.com.br/"},{"@type":"ListItem","position":2,"name":"Prótese de Joelho","item":"https://drbernardobarroso.com.br/protese-de-joelho/"}]},{"@type":"FAQPage","@id":"https://drbernardobarroso.com.br/protese-de-joelho/#faq","mainEntity":[{"@type":"Question","name":"Quanto tempo dura uma prótese de joelho?","acceptedAnswer":{"@type":"Answer","text":"A maioria dos implantes mantém bom funcionamento por mais de 15 a 20 anos. A durabilidade depende do peso, do nível de atividade, da qualidade óssea e do acompanhamento pós-operatório."}},{"@type":"Question","name":"Quanto tempo leva a recuperação da prótese de joelho?","acceptedAnswer":{"@type":"Answer","text":"A caminhada com apoio começa nos primeiros dias após a cirurgia. As atividades do dia a dia são retomadas ao longo de 4 a 8 semanas e o ganho de movimento e força continua nos primeiros meses, com fisioterapia."}},{"@type":"Question","name":"Vou poder voltar a caminhar e subir escadas?","acceptedAnswer":{"@type":"Answer","text":"Sim. O objetivo da artroplastia é aliviar a dor e devolver autonomia para caminhar, subir escadas, dirigir e voltar a atividades de baixo impacto, como natação, bicicleta e musculação orientada."}},{"@type":"Question","name":"A cirurgia de prótese de joelho dói muito?","acceptedAnswer":{"@type":"Answer","text":"O controle da dor é planejado antes da cirurgia, com anestesia regional e bloqueios. A dor do pós-operatório é tratada com medicação e tende a ser menor do que a dor da artrose avançada."}},{"@type":"Question","name":"Plano de saúde cobre prótese de joelho?","acceptedAnswer":{"@type":"Answer","text":"A artroplastia de joelho consta no rol de procedimentos da ANS. A cobertura depende do contrato e da autorização, e a secretaria orienta sobre a documentação necessária."}},{"@type":"Question","name":"Existe alternativa antes da prótese?","acceptedAnswer":{"@type":"Answer","text":"Em artrose leve a moderada, fisioterapia, controle de peso, medicação e infiltração de ácido hialurônico podem controlar a dor por bastante tempo."}}]}]};
+---
+
+<Layout
+  title="Prótese de Joelho em Vitória (ES): indicações e recuperação | Dr. Bernardo Barroso"
+  description="Prótese de joelho: indicações, tipos de prótese, como é a cirurgia e tempo de recuperação. Avaliação com Dr. Bernardo Barroso, cirurgião de joelho em Vitória, Serra e Vila Velha (ES)."
+  canonical="https://drbernardobarroso.com.br/protese-de-joelho/"
+  ogType="article"
+  ogImage="https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp"
+  whatsappUrl="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20pr%C3%B3tese%20de%20joelho%20com%20o%20Dr.%20Bernardo%20Barroso."
+  schema={schema}
+>
+  <nav class="crumb" aria-label="Trilha de navegação"><ol><li><a href="/">Home</a></li><li><a href="/protese-de-joelho/" aria-current="page">Prótese de Joelho</a></li></ol></nav>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));align-items:center;gap:clamp(32px,5vw,64px)">
+        <div class="hero-copy">
+          <p class="pill"><i aria-hidden="true"></i>Artroplastia · Vitória · Serra · Vila Velha</p>
+          <h1>Prótese de Joelho: tudo o que você <mark>precisa saber</mark> antes da cirurgia</h1>
+          <p class="lede">Entenda indicações, tipos de prótese, tempo de recuperação e tire todas as suas dúvidas com quem realmente entende do assunto.</p>
+          <div class="cta-row">
+            <a class="btn" href="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20pr%C3%B3tese%20de%20joelho%20com%20o%20Dr.%20Bernardo%20Barroso." target="_blank" rel="noopener" data-cta="whatsapp-hero"><svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg> Falar com o especialista no WhatsApp</a>
+            <span class="cta-note">Resposta da secretaria em horário comercial</span>
+          </div>
+          <p class="trust">20+ anos de atuação <i aria-hidden="true">·</i> Membro SBOT e SBCJ <i aria-hidden="true">·</i> Seleção Brasileira Feminina 2012–2022</p>
+        </div>
+        <figure class="figure">
+          <div class="slot">Imagem do implante de prótese de joelho (componente femoral/tibial ou radiografia pós-operatória)</div>
+          <figcaption><b>Implante de prótese total de joelho</b><span>Componentes femoral, tibial e patelar</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="split">
+        <div class="stack">
+          <p class="eyebrow">Indicações</p>
+          <h2>Quando a prótese de joelho é indicada</h2>
+          <p class="muted" style="max-width:46ch">A artroplastia entra em cena quando a artrose já desgastou a cartilagem e o tratamento clínico deixou de controlar a dor. A decisão é sempre individual, com base no exame físico e nas radiografias.</p>
+        </div>
+        <ul class="num-list">
+          <li><b>01</b>Dor que persiste em repouso ou à noite, apesar de medicação e fisioterapia</li>
+          <li><b>02</b>Limitação para caminhar distâncias curtas, subir escadas ou levantar da cadeira</li>
+          <li><b>03</b>Artrose avançada nas radiografias, com redução do espaço articular</li>
+          <li><b>04</b>Deformidade do eixo da perna (joelho varo ou valgo) e rigidez progressiva</li>
+          <li><b>05</b>Perda de qualidade de vida, sono e independência no dia a dia</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap stack" style="gap:clamp(28px,3.5vw,44px)">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <h2>Não existe uma prótese única para todos os joelhos</h2>
+          <p class="lede">O tipo de implante é escolhido conforme o padrão de desgaste, o alinhamento da perna, a idade e a demanda funcional de cada paciente.</p>
+        </div>
+        <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))">
+          <article class="card is-key"><p class="tag">Total</p><h3>Prótese total</h3><p>Substitui as superfícies do fêmur e da tíbia, com ou sem componente patelar. É a opção quando o desgaste atinge mais de um compartimento do joelho.</p></article>
+          <article class="card"><p class="tag">Parcial</p><h3>Prótese parcial (unicompartimental)</h3><p>Troca apenas o compartimento desgastado, preservando ligamentos e osso saudável. Recuperação mais rápida em casos bem selecionados.</p></article>
+          <article class="card"><p class="tag">Revisão</p><h3>Prótese de revisão</h3><p>Indicada quando um implante anterior soltou, desgastou ou infeccionou. Usa componentes com maior fixação e reconstrução óssea quando necessário.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap stack" style="gap:clamp(28px,3.5vw,44px)">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <p class="eyebrow">Recuperação</p>
+          <h2>Como é a recuperação, passo a passo</h2>
+        </div>
+        <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
+          <div class="step"><b>Dias 1–3</b><p>Internação curta, controle da dor e primeiros passos com apoio de andador, já com fisioterapia no hospital.</p></div>
+          <div class="step"><b>Semanas 1–4</b><p>Fisioterapia regular, ganho de flexão e extensão, redução do inchaço e transição gradual para a bengala.</p></div>
+          <div class="step"><b>Semanas 4–8</b><p>Retomada das atividades do dia a dia, caminhadas mais longas e, na maioria dos casos, liberação para dirigir.</p></div>
+          <div class="step"><b>3–6 meses</b><p>Fortalecimento e atividades de baixo impacto: natação, bicicleta e musculação orientada, com revisões periódicas.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap stack" style="gap:22px">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2>Perguntas que todo paciente faz</h2>
+        </div>
+        <div class="faq">
+          <details open><summary>Quanto tempo dura uma prótese de joelho?</summary><div>A maioria dos implantes mantém bom funcionamento por mais de 15 a 20 anos. A durabilidade depende do peso, do nível de atividade, da qualidade óssea e do acompanhamento pós-operatório.</div></details>
+          <details><summary>Quanto tempo leva a recuperação da prótese de joelho?</summary><div>A caminhada com apoio começa nos primeiros dias após a cirurgia. As atividades do dia a dia são retomadas ao longo de 4 a 8 semanas e o ganho de movimento e força continua nos primeiros meses, com fisioterapia.</div></details>
+          <details><summary>Vou poder voltar a caminhar e subir escadas?</summary><div>Sim. O objetivo da artroplastia é aliviar a dor e devolver autonomia para caminhar, subir escadas, dirigir e voltar a atividades de baixo impacto, como natação, bicicleta e musculação orientada.</div></details>
+          <details><summary>A cirurgia de prótese de joelho dói muito?</summary><div>O controle da dor é planejado antes da cirurgia, com anestesia regional e bloqueios. A dor do pós-operatório é tratada com medicação e tende a ser menor do que a dor da artrose avançada.</div></details>
+          <details><summary>Plano de saúde cobre prótese de joelho?</summary><div>A artroplastia de joelho consta no rol de procedimentos da ANS. A cobertura depende do contrato e da autorização, e a secretaria orienta sobre a documentação necessária.</div></details>
+          <details><summary>Existe alternativa antes da prótese?</summary><div>Em artrose leve a moderada, fisioterapia, controle de peso, medicação e infiltração de ácido hialurônico podem controlar a dor por bastante tempo.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="sobre-autor">
+      <div class="author">
+        <figure class="figure">
+          <img src="https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Dr. Bernardo Garcia Barroso, ortopedista especialista em joelho, em consultório">
+        </figure>
+        <div class="stack">
+          <p class="eyebrow">Quem vai te atender</p>
+          <h2>Dr. Bernardo Garcia Barroso</h2>
+          <p class="muted">Ortopedista e cirurgião de joelho, com mais de 20 anos de atuação em Vitória, Serra e Vila Velha. Supervisor da Residência Médica em Ortopedia do Vitória Apart Hospital, membro titular da SBOT e efetivo da SBCJ, e integrante da equipe médica da Seleção Brasileira de Futebol Feminino entre 2012 e 2022.</p>
+          <p><a href="/#sobre">Ver formação completa →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="band">
+          <div class="stack" style="gap:10px">
+            <h2>Traga seus exames e receba uma conduta clara</h2>
+            <p class="muted" style="max-width:52ch">Envie uma mensagem com sua queixa e suas radiografias. A secretaria retorna com os horários disponíveis em Vitória, Serra e Vila Velha.</p>
+          </div>
+          <a class="btn" href="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20pr%C3%B3tese%20de%20joelho%20com%20o%20Dr.%20Bernardo%20Barroso." target="_blank" rel="noopener" data-cta="whatsapp-cta-final"><svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg> Agendar avaliação</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); align-items:center; gap:clamp(32px,5vw,64px); border-top:0; background:radial-gradient(120% 90% at 78% 18%,#10262c 0%,#0a141b 45%,var(--bg) 100%); }
+  .hero-copy { display:flex; flex-direction:column; gap:22px; max-width:660px; }
+  .pill { display:inline-flex; align-items:center; gap:10px; align-self:flex-start; border:1px solid var(--brand-line); background:rgba(79,209,197,.07); border-radius:999px; padding:7px 14px; font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+  .pill i { width:6px; height:6px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(79,209,197,.18); }
+  .hero h1 mark { background:none; color:var(--brand); }
+  .cta-row { display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+  .cta-note { font-size:.84rem; line-height:1.5; color:var(--ink-3); max-width:22ch; }
+  .trust { display:flex; flex-wrap:wrap; gap:8px 22px; font-size:.84rem; color:var(--ink-2); }
+  .trust i { color:var(--brand); font-style:normal; }
+  .figure { position:relative; width:100%; max-width:520px; justify-self:center; border-radius:20px; border:1px solid rgba(231,238,242,.1); background:linear-gradient(180deg,rgba(79,209,197,.08),rgba(6,11,16,.5)); padding:12px; box-shadow:0 30px 70px rgba(0,0,0,.45); margin:0; }
+  .figure img { border-radius:var(--r); aspect-ratio:4/5; object-fit:cover; object-position:center top; width:100%; background:var(--bg-3); }
+  .figure figcaption { display:flex; flex-direction:column; gap:3px; padding:14px 6px 4px; }
+  .figure figcaption b { font:600 .94rem/1.3 var(--display); color:#fff; }
+  .figure figcaption span { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+  .slot { aspect-ratio:4/5; border-radius:var(--r); background:var(--bg-3); border:1px dashed var(--line-2); display:grid; place-items:center; padding:24px; text-align:center; font-size:.82rem; color:var(--ink-4); line-height:1.5; }
+  .crumb { font-size:.78rem; color:var(--ink-4); padding:14px var(--pad) 0; }
+  .crumb ol { display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0; max-width:var(--max); margin-inline:auto; }
+  .crumb a { color:var(--ink-3); }
+  .crumb li+li::before { content:"/"; margin-right:8px; color:var(--ink-5); }
+  .steps { display:grid; gap:18px; }
+  .step { display:flex; flex-direction:column; gap:8px; padding:24px; border-radius:var(--r); border:1px solid var(--line); background:rgba(231,238,242,.03); }
+  .step b { font:500 .75rem/1 var(--display); letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+  .step p { font-size:.9rem; line-height:1.6; color:var(--ink-2); }
+  .card.is-key { border-color:var(--brand-line); background:linear-gradient(150deg,rgba(79,209,197,.11),rgba(6,11,16,0) 65%); }
+  .faq { max-width:900px; margin-inline:auto; display:flex; flex-direction:column; gap:10px; }
+  .faq details { border:1px solid var(--line); border-radius:var(--r); background:rgba(231,238,242,.03); overflow:hidden; }
+  .faq summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:20px 22px; font:600 1rem/1.4 var(--sans); color:var(--ink); }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after { content:""; flex:none; width:9px; height:9px; border-right:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(45deg) translateY(-2px); transition:transform .2s ease; }
+  .faq details[open] summary::after { transform:rotate(225deg) translateY(-2px); }
+  .faq details > div { padding:0 22px 20px; font-size:.92rem; line-height:1.65; color:var(--ink-3); }
+  .author { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr)); gap:clamp(24px,3vw,48px); align-items:center; max-width:1120px; margin-inline:auto; }
+  .author .figure { max-width:330px; justify-self:start; }
+  @media print { .crumb { display:none; } }
+</style>

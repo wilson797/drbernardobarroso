@@ -1,0 +1,163 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const schema = {"@context":"https://schema.org","@graph":[{"@type":"Physician","@id":"https://drbernardobarroso.com.br/#physician","name":"Dr. Bernardo Garcia Barroso","medicalSpecialty":"Orthopedic","image":"https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp","url":"https://drbernardobarroso.com.br/","telephone":"+5527992753921","identifier":"CRM 8842-ES","description":"Ortopedista especialista em cirurgias e tratamentos do joelho: artroscopia, reconstrução de LCA, menisco, cartilagem, infiltração de ácido hialurônico e prótese de joelho.","areaServed":[{"@type":"City","name":"Vitória"},{"@type":"City","name":"Serra"},{"@type":"City","name":"Vila Velha"}],"address":{"@type":"PostalAddress","addressLocality":"Vitória","addressRegion":"ES","addressCountry":"BR"},"memberOf":[{"@type":"Organization","name":"Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)"},{"@type":"Organization","name":"Sociedade Brasileira de Cirurgia do Joelho (SBCJ)"}],"availableService":[{"@type":"MedicalProcedure","name":"Reconstrução do Ligamento Cruzado Anterior (LCA)","url":"https://drbernardobarroso.com.br/ligamento-cruzado/"},{"@type":"MedicalProcedure","name":"Infiltração de ácido hialurônico no joelho (viscossuplementação)","url":"https://drbernardobarroso.com.br/acido-hialuronico/"},{"@type":"MedicalProcedure","name":"Prótese de joelho (artroplastia)","url":"https://drbernardobarroso.com.br/protese-de-joelho/"}]},{"@type":"WebSite","@id":"https://drbernardobarroso.com.br/#website","url":"https://drbernardobarroso.com.br/","name":"Dr. Bernardo Barroso — Cirurgia do Joelho","inLanguage":"pt-BR","publisher":{"@id":"https://drbernardobarroso.com.br/#physician"}},{"@type":["MedicalWebPage","WebPage"],"@id":"https://drbernardobarroso.com.br/acido-hialuronico/#page","url":"https://drbernardobarroso.com.br/acido-hialuronico/","name":"Infiltração de Ácido Hialurônico no Joelho","description":"Indicações, como é feito, duração do efeito e cuidados após a viscossuplementação do joelho.","inLanguage":"pt-BR","isPartOf":{"@id":"https://drbernardobarroso.com.br/#website"},"dateModified":"2026-09-12","about":{"@type":"MedicalProcedure","name":"Viscossuplementação com ácido hialurônico","procedureType":"Percutaneous"},"author":{"@id":"https://drbernardobarroso.com.br/#physician"},"reviewedBy":{"@id":"https://drbernardobarroso.com.br/#physician"},"speakable":{"@type":"SpeakableSpecification","cssSelector":["h1",".lede"]}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://drbernardobarroso.com.br/"},{"@type":"ListItem","position":2,"name":"Infiltração Ácido Hialurônico","item":"https://drbernardobarroso.com.br/acido-hialuronico/"}]},{"@type":"FAQPage","@id":"https://drbernardobarroso.com.br/acido-hialuronico/#faq","mainEntity":[{"@type":"Question","name":"A infiltração de ácido hialurônico no joelho dói?","acceptedAnswer":{"@type":"Answer","text":"O procedimento é feito em consultório, com anestesia local, e leva poucos minutos. O desconforto é leve e o paciente retorna às atividades no mesmo dia, com orientações específicas."}},{"@type":"Question","name":"Quanto tempo dura o efeito da viscossuplementação?","acceptedAnswer":{"@type":"Answer","text":"O alívio da dor costuma se manter por seis meses a um ano, variando com o grau de artrose, o peso e o nível de atividade. A necessidade de nova aplicação é reavaliada em consulta."}},{"@type":"Question","name":"Quantas aplicações são necessárias?","acceptedAnswer":{"@type":"Answer","text":"Depende do produto escolhido: existem apresentações de aplicação única e esquemas com três aplicações semanais. A definição é feita na consulta, conforme o caso."}},{"@type":"Question","name":"A infiltração substitui a prótese de joelho?","acceptedAnswer":{"@type":"Answer","text":"Não. A viscossuplementação trata a dor da artrose leve a moderada e pode postergar a cirurgia, mas não regenera a cartilagem já perdida. Na artrose avançada, a prótese continua sendo o tratamento indicado."}},{"@type":"Question","name":"Posso trabalhar depois da aplicação?","acceptedAnswer":{"@type":"Answer","text":"Sim. Não há internação nem afastamento prolongado. A recomendação é evitar atividades de impacto nas primeiras 48 horas."}},{"@type":"Question","name":"Quais os cuidados após o procedimento?","acceptedAnswer":{"@type":"Answer","text":"Repouso relativo no primeiro dia, gelo se houver desconforto e retomada gradual das caminhadas e da fisioterapia, conforme orientação."}}]}]};
+---
+
+<Layout
+  title="Infiltração de Ácido Hialurônico no Joelho em Vitória (ES) | Dr. Bernardo Barroso"
+  description="Infiltração de ácido hialurônico no joelho (viscossuplementação): indicações, como é feito, quanto tempo dura o efeito e cuidados após o procedimento. Consulta em Vitória, Serra e Vila Velha."
+  canonical="https://drbernardobarroso.com.br/acido-hialuronico/"
+  ogType="article"
+  ogImage="https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp"
+  whatsappUrl="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20infiltra%C3%A7%C3%A3o%20de%20%C3%A1cido%20hialur%C3%B4nico%20no%20joelho."
+  schema={schema}
+>
+  <nav class="crumb" aria-label="Trilha de navegação"><ol><li><a href="/">Home</a></li><li><a href="/acido-hialuronico/" aria-current="page">Infiltração Ácido Hialurônico</a></li></ol></nav>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr));align-items:center;gap:clamp(32px,5vw,64px)">
+        <div class="hero-copy">
+          <p class="pill"><i aria-hidden="true"></i>Consultório · Vitória · Serra · Vila Velha</p>
+          <h1>Infiltração de Ácido Hialurônico: tratar a dor do joelho <mark>sem cirurgia</mark></h1>
+          <p class="lede">Entenda indicações, como é feita a aplicação, quanto tempo dura o efeito e tire todas as suas dúvidas com quem realmente entende do assunto.</p>
+          <div class="cta-row">
+            <a class="btn" href="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20infiltra%C3%A7%C3%A3o%20de%20%C3%A1cido%20hialur%C3%B4nico%20no%20joelho." target="_blank" rel="noopener" data-cta="whatsapp-hero"><svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg> Falar com o especialista no WhatsApp</a>
+            <span class="cta-note">Resposta da secretaria em horário comercial</span>
+          </div>
+          <p class="trust">20+ anos de atuação <i aria-hidden="true">·</i> Membro SBOT e SBCJ <i aria-hidden="true">·</i> Seleção Brasileira Feminina 2012–2022</p>
+        </div>
+        <figure class="figure">
+          <div class="slot">Imagem da infiltração: aplicação intra-articular no consultório ou seringa de ácido hialurônico</div>
+          <figcaption><b>Viscossuplementação do joelho</b><span>Aplicação intra-articular · Anestesia local</span></figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="split">
+        <div class="stack">
+          <p class="eyebrow">Indicações</p>
+          <h2>Quem pode fazer a infiltração</h2>
+          <p class="muted" style="max-width:46ch">O ácido hialurônico melhora a lubrificação da articulação e reduz a dor do desgaste da cartilagem. É indicado principalmente na artrose leve a moderada, antes da indicação de prótese.</p>
+        </div>
+        <ul class="num-list">
+          <li><b>01</b>Artrose leve a moderada confirmada em radiografia ou ressonância</li>
+          <li><b>02</b>Dor mecânica ao caminhar, subir escadas ou ficar muito tempo de pé</li>
+          <li><b>03</b>Lesões de cartilagem e desgaste após cirurgias prévias do joelho</li>
+          <li><b>04</b>Pacientes sem indicação imediata de prótese que querem postergar a cirurgia</li>
+          <li><b>05</b>Restrição ao uso contínuo de anti-inflamatórios</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap stack" style="gap:clamp(28px,3.5vw,44px)">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <h2>O que esperar do resultado</h2>
+          <p class="lede">A aplicação acontece no próprio consultório, com anestesia local, e leva poucos minutos. Sem internação e sem afastamento prolongado.</p>
+        </div>
+        <div class="cards" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr))">
+          <article class="card is-key"><h3>O que a infiltração faz</h3><p>Melhora a lubrificação e o amortecimento da articulação, reduz a dor mecânica e ajuda a manter as atividades do dia a dia e a fisioterapia em andamento.</p></article>
+          <article class="card"><h3>O que ela não faz</h3><p>Não regenera a cartilagem já perdida e não substitui a <a href="/protese-de-joelho/">prótese de joelho</a> na artrose avançada. É um tratamento da dor, não uma cura da artrose.</p></article>
+          <article class="card"><h3>Duração do efeito</h3><p>O alívio costuma se manter de seis meses a um ano, dependendo do grau de artrose, do peso e do nível de atividade. Novas aplicações são avaliadas em consulta.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt">
+      <div class="wrap stack" style="gap:clamp(28px,3.5vw,44px)">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <p class="eyebrow">Recuperação</p>
+          <h2>O procedimento, do começo ao fim</h2>
+        </div>
+        <div class="steps" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))">
+          <div class="step"><b>Etapa 1</b><p>Consulta com exame físico e leitura dos seus exames de imagem, para confirmar que a infiltração é a melhor conduta.</p></div>
+          <div class="step"><b>Etapa 2</b><p>Escolha do produto e do esquema: dose única ou aplicações semanais, conforme o grau de artrose e a resposta esperada.</p></div>
+          <div class="step"><b>Etapa 3</b><p>Aplicação intra-articular com técnica estéril e anestesia local, em poucos minutos, com você acordado e sem dor significativa.</p></div>
+          <div class="step"><b>Etapa 4</b><p>Retorno às atividades no mesmo dia, evitando impacto por 48 horas, e reavaliação do efeito em consulta.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap stack" style="gap:22px">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2>Perguntas que todo paciente faz</h2>
+        </div>
+        <div class="faq">
+          <details open><summary>A infiltração de ácido hialurônico no joelho dói?</summary><div>O procedimento é feito em consultório, com anestesia local, e leva poucos minutos. O desconforto é leve e o paciente retorna às atividades no mesmo dia, com orientações específicas.</div></details>
+          <details><summary>Quanto tempo dura o efeito da viscossuplementação?</summary><div>O alívio da dor costuma se manter por seis meses a um ano, variando com o grau de artrose, o peso e o nível de atividade. A necessidade de nova aplicação é reavaliada em consulta.</div></details>
+          <details><summary>Quantas aplicações são necessárias?</summary><div>Depende do produto escolhido: existem apresentações de aplicação única e esquemas com três aplicações semanais. A definição é feita na consulta, conforme o caso.</div></details>
+          <details><summary>A infiltração substitui a prótese de joelho?</summary><div>Não. A viscossuplementação trata a dor da artrose leve a moderada e pode postergar a cirurgia, mas não regenera a cartilagem já perdida. Na artrose avançada, a prótese continua sendo o tratamento indicado.</div></details>
+          <details><summary>Posso trabalhar depois da aplicação?</summary><div>Sim. Não há internação nem afastamento prolongado. A recomendação é evitar atividades de impacto nas primeiras 48 horas.</div></details>
+          <details><summary>Quais os cuidados após o procedimento?</summary><div>Repouso relativo no primeiro dia, gelo se houver desconforto e retomada gradual das caminhadas e da fisioterapia, conforme orientação.</div></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="alt" id="sobre-autor">
+      <div class="author">
+        <figure class="figure">
+          <img src="https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp" width="800" height="1000" loading="lazy" decoding="async" alt="Dr. Bernardo Garcia Barroso, ortopedista especialista em joelho, em consultório">
+        </figure>
+        <div class="stack">
+          <p class="eyebrow">Quem vai te atender</p>
+          <h2>Dr. Bernardo Garcia Barroso</h2>
+          <p class="muted">Ortopedista e cirurgião de joelho, com mais de 20 anos de atuação em Vitória, Serra e Vila Velha. Supervisor da Residência Médica em Ortopedia do Vitória Apart Hospital, membro titular da SBOT e efetivo da SBCJ, e integrante da equipe médica da Seleção Brasileira de Futebol Feminino entre 2012 e 2022.</p>
+          <p><a href="/#sobre">Ver formação completa →</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="band">
+          <div class="stack" style="gap:10px">
+            <h2>Saiba se a infiltração é indicada para o seu joelho</h2>
+            <p class="muted" style="max-width:52ch">Envie uma mensagem com sua queixa e seus exames. A secretaria retorna com os horários disponíveis em Vitória, Serra e Vila Velha.</p>
+          </div>
+          <a class="btn" href="https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20infiltra%C3%A7%C3%A3o%20de%20%C3%A1cido%20hialur%C3%B4nico%20no%20joelho." target="_blank" rel="noopener" data-cta="whatsapp-cta-final"><svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z"/></svg> Agendar consulta</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .hero { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,360px),1fr)); align-items:center; gap:clamp(32px,5vw,64px); border-top:0; background:radial-gradient(120% 90% at 78% 18%,#10262c 0%,#0a141b 45%,var(--bg) 100%); }
+  .hero-copy { display:flex; flex-direction:column; gap:22px; max-width:660px; }
+  .pill { display:inline-flex; align-items:center; gap:10px; align-self:flex-start; border:1px solid var(--brand-line); background:rgba(79,209,197,.07); border-radius:999px; padding:7px 14px; font-size:.75rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+  .pill i { width:6px; height:6px; border-radius:50%; background:var(--brand); box-shadow:0 0 0 4px rgba(79,209,197,.18); }
+  .hero h1 mark { background:none; color:var(--brand); }
+  .cta-row { display:flex; flex-wrap:wrap; align-items:center; gap:14px; }
+  .cta-note { font-size:.84rem; line-height:1.5; color:var(--ink-3); max-width:22ch; }
+  .trust { display:flex; flex-wrap:wrap; gap:8px 22px; font-size:.84rem; color:var(--ink-2); }
+  .trust i { color:var(--brand); font-style:normal; }
+  .figure { position:relative; width:100%; max-width:520px; justify-self:center; border-radius:20px; border:1px solid rgba(231,238,242,.1); background:linear-gradient(180deg,rgba(79,209,197,.08),rgba(6,11,16,.5)); padding:12px; box-shadow:0 30px 70px rgba(0,0,0,.45); margin:0; }
+  .figure img { border-radius:var(--r); aspect-ratio:4/5; object-fit:cover; object-position:center top; width:100%; background:var(--bg-3); }
+  .figure figcaption { display:flex; flex-direction:column; gap:3px; padding:14px 6px 4px; }
+  .figure figcaption b { font:600 .94rem/1.3 var(--display); color:#fff; }
+  .figure figcaption span { font-size:.72rem; letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+  .slot { aspect-ratio:4/5; border-radius:var(--r); background:var(--bg-3); border:1px dashed var(--line-2); display:grid; place-items:center; padding:24px; text-align:center; font-size:.82rem; color:var(--ink-4); line-height:1.5; }
+  .crumb { font-size:.78rem; color:var(--ink-4); padding:14px var(--pad) 0; }
+  .crumb ol { display:flex; flex-wrap:wrap; gap:8px; list-style:none; margin:0; padding:0; max-width:var(--max); margin-inline:auto; }
+  .crumb a { color:var(--ink-3); }
+  .crumb li+li::before { content:"/"; margin-right:8px; color:var(--ink-5); }
+  .steps { display:grid; gap:18px; }
+  .step { display:flex; flex-direction:column; gap:8px; padding:24px; border-radius:var(--r); border:1px solid var(--line); background:rgba(231,238,242,.03); }
+  .step b { font:500 .75rem/1 var(--display); letter-spacing:.14em; text-transform:uppercase; color:var(--brand); }
+  .step p { font-size:.9rem; line-height:1.6; color:var(--ink-2); }
+  .card.is-key { border-color:var(--brand-line); background:linear-gradient(150deg,rgba(79,209,197,.11),rgba(6,11,16,0) 65%); }
+  .faq { max-width:900px; margin-inline:auto; display:flex; flex-direction:column; gap:10px; }
+  .faq details { border:1px solid var(--line); border-radius:var(--r); background:rgba(231,238,242,.03); overflow:hidden; }
+  .faq summary { cursor:pointer; list-style:none; display:flex; justify-content:space-between; align-items:center; gap:16px; padding:20px 22px; font:600 1rem/1.4 var(--sans); color:var(--ink); }
+  .faq summary::-webkit-details-marker { display:none; }
+  .faq summary::after { content:""; flex:none; width:9px; height:9px; border-right:2px solid var(--brand); border-bottom:2px solid var(--brand); transform:rotate(45deg) translateY(-2px); transition:transform .2s ease; }
+  .faq details[open] summary::after { transform:rotate(225deg) translateY(-2px); }
+  .faq details > div { padding:0 22px 20px; font-size:.92rem; line-height:1.65; color:var(--ink-3); }
+  .author { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr)); gap:clamp(24px,3vw,48px); align-items:center; max-width:1120px; margin-inline:auto; }
+  .author .figure { max-width:330px; justify-self:start; }
+  @media print { .crumb { display:none; } }
+</style>

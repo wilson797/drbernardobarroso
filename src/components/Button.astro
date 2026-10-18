@@ -1,0 +1,122 @@
+---
+interface Props {
+  href?: string;
+  variant?: 'primary' | 'ghost';
+  size?: 'md' | 'sm';
+  isWhatsApp?: boolean;
+  dataCta?: string;
+  target?: string;
+  rel?: string;
+  class?: string;
+  type?: 'button' | 'submit' | 'reset';
+  [key: string]: any;
+}
+
+const {
+  href,
+  variant = 'primary',
+  size = 'md',
+  isWhatsApp = false,
+  dataCta,
+  target,
+  rel,
+  class: className = '',
+  type = 'button',
+  ...rest
+} = Astro.props;
+
+const classes = [
+  'btn',
+  size === 'sm' && 'btn-sm',
+  variant === 'ghost' && 'btn-ghost',
+  className
+].filter(Boolean).join(' ');
+
+const isExternal = href?.startsWith('http') || target === '_blank';
+const computedRel = rel || (isExternal ? 'noopener' : undefined);
+const computedTarget = target || (isExternal ? '_blank' : undefined);
+---
+
+{href ? (
+  <a
+    href={href}
+    class={classes}
+    target={computedTarget}
+    rel={computedRel}
+    data-cta={dataCta}
+    {...rest}
+  >
+    {isWhatsApp && (
+      <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z" />
+      </svg>
+    )}
+    <slot />
+  </a>
+) : (
+  <button
+    type={type}
+    class={classes}
+    data-cta={dataCta}
+    {...rest}
+  >
+    {isWhatsApp && (
+      <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z" />
+      </svg>
+    )}
+    <slot />
+  </button>
+)}
+
+<style>
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font: 600 0.95rem/1 var(--sans);
+    min-height: 52px;
+    padding: 16px 26px;
+    border-radius: 12px;
+    border: 0;
+    cursor: pointer;
+    box-shadow: 0 14px 34px rgba(79, 209, 197, 0.2);
+    text-decoration: none;
+    transition: background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .btn:hover {
+    background: #6fe0d5;
+    color: var(--brand-ink);
+    transform: translateY(-1px);
+    box-shadow: 0 16px 36px rgba(79, 209, 197, 0.28);
+  }
+
+  .btn:active {
+    transform: translateY(0);
+  }
+
+  .btn-sm {
+    min-height: 44px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    box-shadow: none;
+  }
+
+  .btn-ghost {
+    background: none;
+    color: var(--brand);
+    border: 1px solid rgba(79, 209, 197, 0.45);
+    box-shadow: none;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(79, 209, 197, 0.12);
+    color: var(--brand);
+    box-shadow: none;
+  }
+</style>

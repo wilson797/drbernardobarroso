@@ -1,11 +1,534 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Button from '../components/Button.astro';
+import Convenios from '../components/Convenios.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const siteData = {
+  title: "Ortopedista de Joelho em Vitória, Serra e Vila Velha | Dr. Bernardo Barroso",
+  description: "Dr. Bernardo Barroso, ortopedista especialista em joelho em Vitória, Serra e Vila Velha (ES). Cirurgia de LCA, infiltração de ácido hialurônico e prótese de joelho. Agende pelo WhatsApp.",
+  canonical: "https://drbernardobarroso.com.br/",
+  ogImage: "https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp",
+  phone: "+5527992753921",
+  phoneDisplay: "(27) 99275-3921",
+  whatsappUrl: "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho."
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Physician",
+      "@id": "https://drbernardobarroso.com.br/#physician",
+      "name": "Dr. Bernardo Garcia Barroso",
+      "medicalSpecialty": "Orthopedic",
+      "image": siteData.ogImage,
+      "url": siteData.canonical,
+      "telephone": siteData.phone,
+      "identifier": "CRM 8842-ES",
+      "description": "Ortopedista especialista em cirurgias e tratamentos do joelho: artroscopia, reconstrução de LCA, menisco, cartilagem, infiltração de ácido hialurônico e prótese de joelho.",
+      "areaServed": [
+        { "@type": "City", "name": "Vitória" },
+        { "@type": "City", "name": "Serra" },
+        { "@type": "City", "name": "Vila Velha" }
+      ],
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Vitória",
+        "addressRegion": "ES",
+        "addressCountry": "BR"
+      },
+      "memberOf": [
+        { "@type": "Organization", "name": "Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)" },
+        { "@type": "Organization", "name": "Sociedade Brasileira de Cirurgia do Joelho (SBCJ)" }
+      ],
+      "availableService": [
+        {
+          "@type": "MedicalProcedure",
+          "name": "Reconstrução do Ligamento Cruzado Anterior (LCA)",
+          "url": "https://drbernardobarroso.com.br/ligamento-cruzado/"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Infiltração de ácido hialurônico no joelho (viscossuplementação)",
+          "url": "https://drbernardobarroso.com.br/acido-hialuronico/"
+        },
+        {
+          "@type": "MedicalProcedure",
+          "name": "Prótese de joelho (artroplastia)",
+          "url": "https://drbernardobarroso.com.br/protese-de-joelho/"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://drbernardobarroso.com.br/#website",
+      "url": siteData.canonical,
+      "name": "Dr. Bernardo Barroso — Cirurgia do Joelho",
+      "inLanguage": "pt-BR",
+      "publisher": { "@id": "https://drbernardobarroso.com.br/#physician" }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://drbernardobarroso.com.br/#page",
+      "url": siteData.canonical,
+      "name": "Ortopedista de Joelho em Vitória, Serra e Vila Velha",
+      "isPartOf": { "@id": "https://drbernardobarroso.com.br/#website" },
+      "inLanguage": "pt-BR",
+      "dateModified": "2026-09-12",
+      "about": { "@id": "https://drbernardobarroso.com.br/#physician" }
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://drbernardobarroso.com.br/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Quanto tempo leva a recuperação da cirurgia de LCA?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O retorno às atividades do dia a dia costuma ocorrer nas primeiras semanas. O retorno ao esporte de impacto é avaliado individualmente, em geral entre 6 e 12 meses, conforme a evolução da reabilitação."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "A infiltração de ácido hialurônico no joelho dói?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O procedimento é feito em consultório, com anestesia local, e leva poucos minutos. O desconforto é leve e o paciente retorna às atividades no mesmo dia, com orientações específicas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quando a prótese de joelho é indicada?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A artroplastia é considerada na artrose avançada, quando dor e limitação persistem após tratamento clínico, fisioterapia e medicações, comprometendo a qualidade de vida."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais convênios são atendidos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O Dr. Bernardo Barroso atende pelos convênios ArcelorMittal, Bradesco Saúde, Capesaúde, Cassi, Cesan, GEAP Saúde, Mediservice, PASA, Petrobras, Porto de Vitória, Postal Saúde, Saúde Caixa, SulAmérica Saúde, Unimed e Vale, além de atendimento particular. A secretaria confirma a cobertura do seu plano antes do agendamento."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde o Dr. Bernardo Barroso atende?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O atendimento acontece em Vitória, Serra e Vila Velha, no Espírito Santo. O endereço da unidade é confirmado no agendamento, conforme o dia e o tipo de consulta."
+          }
+        }
+      ]
+    }
+  ]
+};
 ---
 
-<Layout>
-	<Welcome />
+<Layout
+  title={siteData.title}
+  description={siteData.description}
+  canonical={siteData.canonical}
+  ogImage={siteData.ogImage}
+  schema={jsonLd}
+  phone={siteData.phone}
+  phoneDisplay={siteData.phoneDisplay}
+  whatsappUrl={siteData.whatsappUrl}
+>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-wrap">
+        <div class="hero-copy">
+          <p class="pill"><i aria-hidden="true"></i>Vitória · Serra · Vila Velha</p>
+          <h1>Especialista em <mark>Cirurgias e Tratamentos</mark> do Joelho</h1>
+          <p class="lede">
+            Artroscopia, reconstrução de LCA, lesões de menisco e cartilagem, prótese de joelho e traumatologia do esporte — diagnóstico preciso e conduta individualizada para cada paciente.
+          </p>
+          <div class="cta-row">
+            <Button
+              href={siteData.whatsappUrl}
+              isWhatsApp
+              dataCta="whatsapp-hero"
+            >
+              Agendar consulta no WhatsApp
+            </Button>
+            <span class="cta-note">Resposta da secretaria em horário comercial</span>
+          </div>
+          <p class="trust">
+            20+ anos de atuação <i aria-hidden="true">·</i> Membro SBOT e SBCJ <i aria-hidden="true">·</i> Seleção Brasileira Feminina 2012–2022
+          </p>
+        </div>
+
+        <figure class="figure">
+          <img
+            src={siteData.ogImage}
+            width="800"
+            height="1000"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+            alt="Dr. Bernardo Garcia Barroso, ortopedista especialista em joelho em Vitória (ES)"
+          />
+          <figcaption>
+            <b>Dr. Bernardo Garcia Barroso</b>
+            <span>Ortopedia · Cirurgia do Joelho · CRM 8842-ES</span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="alt" id="sobre">
+      <div class="split">
+        <div class="stack">
+          <p class="eyebrow">Sobre o médico</p>
+          <h2>Formação e titulação</h2>
+          <p class="muted" style="max-width:44ch">
+            Formação, títulos e atuação acadêmica e esportiva do Dr. Bernardo Barroso.
+          </p>
+        </div>
+        <ul class="num-list">
+          <li><b>01</b>Supervisor e Preceptor da Residência Médica em Ortopedia e Traumatologia do Vitória Apart Hospital</li>
+          <li><b>02</b>Membro Titular da Sociedade Brasileira de Ortopedia e Traumatologia (SBOT)</li>
+          <li><b>03</b>Membro Efetivo da Sociedade Brasileira de Cirurgia do Joelho (SBCJ)</li>
+          <li><b>04</b>Membro Fundador do Grupo de Estudo em Cirurgia do Joelho do ES</li>
+          <li><b>05</b>Equipe Médica da Seleção Brasileira de Futebol Feminino, 2012 a 2022</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="tratamentos">
+      <div class="wrap stack" style="gap:clamp(30px,4vw,48px)">
+        <div class="stack" style="gap:12px;max-width:720px">
+          <p class="eyebrow">Tratamentos</p>
+          <h2>Tratamentos do joelho em Vitória, Serra e Vila Velha</h2>
+          <p class="lede">
+            Cada caso começa por um diagnóstico preciso: história clínica, exame físico e exames de imagem definem se o melhor caminho é conservador ou cirúrgico. Abaixo, os três tratamentos mais procurados no consultório.
+          </p>
+        </div>
+
+        <div class="cards cards-grid">
+          <article class="card">
+            <p class="tag">Cirurgia artroscópica</p>
+            <h3 class="card-title">
+              <a href="/ligamento-cruzado/" style="color:inherit">Ligamento Cruzado Anterior</a>
+            </h3>
+            <p>
+              A ruptura do LCA é uma das lesões mais frequentes no esporte: acontece em mudanças de direção, desacelerações e entorses com o pé fixo no chão. A reconstrução é feita por artroscopia, com enxerto que substitui o ligamento rompido e devolve estabilidade à articulação.
+            </p>
+            <dl class="card-dl">
+              <div>
+                <dt class="eyebrow">Quando operar</dt>
+                <dd class="card-dd">
+                  Instabilidade recorrente, esportes com pivô, lesões associadas de menisco ou cartilagem e falha do tratamento conservador.
+                </dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Recuperação</dt>
+                <dd class="card-dd">
+                  Atividades do dia a dia em poucas semanas; retorno ao esporte de impacto em geral entre 6 e 12 meses.
+                </dd>
+              </div>
+            </dl>
+            <p style="margin-top:8px">
+              <a href="/ligamento-cruzado/">Ver página completa sobre Ligamento Cruzado Anterior →</a>
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="tag">Procedimento em consultório</p>
+            <h3 class="card-title">
+              <a href="/acido-hialuronico/" style="color:inherit">Infiltração de Ácido Hialurônico</a>
+            </h3>
+            <p>
+              Também chamada de viscossuplementação, é a aplicação de ácido hialurônico dentro do joelho para melhorar a lubrificação da articulação e reduzir a dor da artrose e do desgaste da cartilagem.
+            </p>
+            <dl class="card-dl">
+              <div>
+                <dt class="eyebrow">Indicações</dt>
+                <dd class="card-dd">
+                  Artrose leve a moderada, dor mecânica ao caminhar e subir escadas e lesões de cartilagem.
+                </dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Como é feito</dt>
+                <dd class="card-dd">
+                  Aplicação intra-articular com anestesia local, em poucos minutos, sem internação.
+                </dd>
+              </div>
+            </dl>
+            <p style="margin-top:8px">
+              <a href="/acido-hialuronico/">Ver página completa sobre Infiltração de Ácido Hialurônico →</a>
+            </p>
+          </article>
+
+          <article class="card">
+            <p class="tag">Artroplastia</p>
+            <h3 class="card-title">
+              <a href="/protese-de-joelho/" style="color:inherit">Prótese de Joelho</a>
+            </h3>
+            <p>
+              Na artrose avançada, a cartilagem se desgasta até o osso e a dor passa a limitar caminhar, dormir e trabalhar. A artroplastia substitui as superfícies desgastadas por componentes que restauram o alinhamento e o movimento do joelho.
+            </p>
+            <dl class="card-dl">
+              <div>
+                <dt class="eyebrow">Quando é indicada</dt>
+                <dd class="card-dd">
+                  Artrose avançada com dor persistente após medicação e fisioterapia, rigidez e deformidade do eixo da perna.
+                </dd>
+              </div>
+              <div>
+                <dt class="eyebrow">Recuperação</dt>
+                <dd class="card-dd">
+                  Caminhada assistida nos primeiros dias e ganho progressivo de movimento nos primeiros meses.
+                </dd>
+              </div>
+            </dl>
+            <p style="margin-top:8px">
+              <a href="/protese-de-joelho/">Ver página completa sobre Prótese de Joelho →</a>
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <Convenios />
+
+    <section id="faq">
+      <div class="wrap stack" style="gap:22px">
+        <div class="stack" style="gap:12px;max-width:680px">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2>Perguntas que todo paciente faz</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary>Quanto tempo leva a recuperação da cirurgia de LCA?</summary>
+            <div>
+              O retorno às atividades do dia a dia costuma ocorrer nas primeiras semanas. O retorno ao esporte de impacto é avaliado individualmente, em geral entre 6 e 12 meses, conforme a evolução da reabilitação.
+            </div>
+          </details>
+          <details>
+            <summary>A infiltração de ácido hialurônico no joelho dói?</summary>
+            <div>
+              O procedimento é feito em consultório, com anestesia local, e leva poucos minutos. O desconforto é leve e o paciente retorna às atividades no mesmo dia, com orientações específicas.
+            </div>
+          </details>
+          <details>
+            <summary>Quando a prótese de joelho é indicada?</summary>
+            <div>
+              A artroplastia é considerada na artrose avançada, quando dor e limitação persistem após tratamento clínico, fisioterapia e medicações, comprometendo a qualidade de vida.
+            </div>
+          </details>
+          <details>
+            <summary>Quais convênios são atendidos?</summary>
+            <div>
+              O Dr. Bernardo Barroso atende pelos convênios ArcelorMittal, Bradesco Saúde, Capesaúde, Cassi, Cesan, GEAP Saúde, Mediservice, PASA, Petrobras, Porto de Vitória, Postal Saúde, Saúde Caixa, SulAmérica Saúde, Unimed e Vale, além de atendimento particular. A secretaria confirma a cobertura do seu plano antes do agendamento.
+            </div>
+          </details>
+          <details>
+            <summary>Onde o Dr. Bernardo Barroso atende?</summary>
+            <div>
+              O atendimento acontece em Vitória, Serra e Vila Velha, no Espírito Santo. O endereço da unidade é confirmado no agendamento, conforme o dia e o tipo de consulta.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="band">
+          <div class="stack" style="gap:10px">
+            <h2>Agende sua consulta com o Dr. Bernardo Barroso</h2>
+            <p class="muted" style="max-width:52ch">
+              Atendimento em Vitória, Serra e Vila Velha. Envie uma mensagem e a secretaria retorna com horários disponíveis.
+            </p>
+          </div>
+          <Button
+            href={siteData.whatsappUrl}
+            isWhatsApp
+            dataCta="whatsapp-cta-final"
+          >
+            Falar no WhatsApp
+          </Button>
+        </div>
+      </div>
+    </section>
+  </main>
 </Layout>
+
+<style>
+  /* hero */
+  .hero {
+    display: grid;
+    align-items: center;
+    border-top: 0;
+    background: radial-gradient(120% 90% at 78% 18%, #10262c 0%, #0a141b 45%, var(--bg) 100%);
+  }
+
+  .hero-wrap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+    align-items: center;
+    gap: clamp(32px, 5vw, 64px);
+  }
+
+  .hero-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    max-width: 660px;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    border: 1px solid var(--brand-line);
+    background: rgba(79, 209, 197, 0.07);
+    border-radius: 999px;
+    padding: 7px 14px;
+    font-size: 0.75rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+
+  .pill i {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--brand);
+    box-shadow: 0 0 0 4px rgba(79, 209, 197, 0.18);
+  }
+
+  .hero h1 mark {
+    background: none;
+    color: var(--brand);
+  }
+
+  .cta-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .cta-note {
+    font-size: 0.84rem;
+    line-height: 1.5;
+    color: var(--ink-3);
+    max-width: 22ch;
+  }
+
+  .trust {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-size: 0.84rem;
+    color: var(--ink-2);
+  }
+
+  .trust i {
+    color: var(--brand);
+    font-style: normal;
+  }
+
+  .figure {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    justify-self: center;
+    border-radius: 20px;
+    border: 1px solid rgba(231, 238, 242, 0.1);
+    background: linear-gradient(180deg, rgba(79, 209, 197, 0.08), rgba(6, 11, 16, 0.5));
+    padding: 12px;
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.45);
+    margin: 0;
+  }
+
+  .figure img {
+    border-radius: var(--r);
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center top;
+    width: 100%;
+    background: var(--bg-3);
+  }
+
+  .figure figcaption {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 14px 6px 4px;
+  }
+
+  .figure figcaption b {
+    font: 600 0.94rem/1.3 var(--display);
+    color: #fff;
+  }
+
+  .figure figcaption span {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--brand);
+  }
+
+  /* faq */
+  .faq {
+    max-width: 900px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .faq details {
+    border: 1px solid var(--line);
+    border-radius: var(--r);
+    background: rgba(231, 238, 242, 0.03);
+    overflow: hidden;
+  }
+
+  .faq summary {
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 20px 22px;
+    font: 600 1rem/1.4 var(--sans);
+    color: var(--ink);
+  }
+
+  .faq summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq summary::after {
+    content: "";
+    flex: none;
+    width: 9px;
+    height: 9px;
+    border-right: 2px solid var(--brand);
+    border-bottom: 2px solid var(--brand);
+    transform: rotate(45deg) translateY(-2px);
+    transition: transform 0.2s ease;
+  }
+
+  .faq details[open] summary::after {
+    transform: rotate(225deg) translateY(-2px);
+  }
+
+  .faq details > div {
+    padding: 0 22px 20px;
+    font-size: 0.92rem;
+    line-height: 1.65;
+    color: var(--ink-3);
+  }
+</style>

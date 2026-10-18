@@ -1,23 +1,435 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogType?: string;
+  robots?: string;
+  schema?: Record<string, any>;
+  phone?: string;
+  phoneDisplay?: string;
+  whatsappUrl?: string;
+  showFloatingWhatsapp?: boolean;
+}
+
+const {
+  title = "Ortopedista de Joelho em Vitória, Serra e Vila Velha | Dr. Bernardo Barroso",
+  description = "Dr. Bernardo Barroso, ortopedista especialista em joelho em Vitória, Serra e Vila Velha (ES). Cirurgia de LCA, infiltração de ácido hialurônico e prótese de joelho. Agende pelo WhatsApp.",
+  canonical = "https://drbernardobarroso.com.br/",
+  ogImage = "https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp",
+  ogType = "website",
+  robots = "index,follow,max-image-preview:large,max-snippet:-1",
+  schema,
+  phone = "+5527992753921",
+  phoneDisplay = "(27) 99275-3921",
+  whatsappUrl = "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho.",
+  showFloatingWhatsapp = true
+} = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  <meta name="robots" content={robots} />
+  <meta name="author" content="Dr. Bernardo Garcia Barroso" />
+  <meta name="geo.region" content="BR-ES" />
+  <meta name="geo.placename" content="Vitória, Espírito Santo" />
+  <meta name="theme-color" content="#060b10" />
+
+  <meta property="og:type" content={ogType} />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:site_name" content="Dr. Bernardo Barroso — Cirurgia do Joelho" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+  <link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" />
+  </noscript>
+
+  {schema && <script type="application/ld+json" set:html={JSON.stringify(schema)} />}
+</head>
+<body>
+  <a class="skip" href="#main">Ir para o conteúdo</a>
+
+  <Header phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={whatsappUrl} />
+
+  <slot />
+
+  <Footer phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={whatsappUrl} />
+
+  {showFloatingWhatsapp && <FloatingWhatsApp whatsappUrl={whatsappUrl} />}
+
+  <script>
+    document.addEventListener('click', (e) => {
+      const target = e.target as HTMLElement | null;
+      const a = target?.closest('[data-cta]');
+      if (a && typeof (window as any).gtag === 'function') {
+        (window as any).gtag('event', 'contato_whatsapp', {
+          origem: a.getAttribute('data-cta'),
+          pagina: window.location.pathname
+        });
+      }
+    });
+  </script>
+</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
+<style is:global>
+  *, *::before, *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 1rem/1.62 var(--sans);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  :root {
+    --bg: #060b10;
+    --bg-2: #070d13;
+    --bg-3: #0a141b;
+    --ink: #e7eef2;
+    --ink-2: #cfdde3;
+    --ink-3: #a9bcc4;
+    --ink-4: #7f96a1;
+    --ink-5: #6e8590;
+    --brand: #4fd1c5;
+    --brand-lite: #8fe9df;
+    --brand-ink: #04211f;
+    --line: rgba(231, 238, 242, 0.09);
+    --line-2: rgba(231, 238, 242, 0.14);
+    --brand-line: rgba(79, 209, 197, 0.3);
+    --sans: 'IBM Plex Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --display: 'Space Grotesk', 'IBM Plex Sans', system-ui, sans-serif;
+    --pad: clamp(20px, 5vw, 72px);
+    --gap: clamp(28px, 4vw, 56px);
+    --r: 14px;
+    --r-lg: 18px;
+    --max: 1180px;
+  }
+
+  img, svg {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--display);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.14;
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  h1 {
+    font-size: clamp(2rem, 4.4vw, 3.5rem);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+  }
+
+  h2 {
+    font-size: clamp(1.6rem, 3vw, 2.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.2rem, 1.6vw, 1.35rem);
+  }
+
+  p {
+    margin: 0;
+    text-wrap: pretty;
+  }
+
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  a {
+    color: var(--brand);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  a:hover {
+    color: var(--brand-lite);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  .skip {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 99;
+    padding: 12px 18px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font-weight: 600;
+  }
+
+  .skip:focus {
+    left: 8px;
+    top: 8px;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .eyebrow {
+    font-size: 0.69rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-5);
+    font-weight: 500;
+  }
+
+  .lede {
+    font-size: clamp(1rem, 1.2vw, 1.15rem);
+    color: var(--ink-3);
+    max-width: 58ch;
+  }
+
+  .muted {
+    color: var(--ink-3);
+  }
+
+  section {
+    padding: clamp(48px, 6vw, 92px) var(--pad);
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+
+  .alt {
+    background: var(--bg-2);
+  }
+
+  /* buttons */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--brand);
+    color: var(--brand-ink);
+    font: 600 0.95rem/1 var(--sans);
+    min-height: 52px;
+    padding: 16px 26px;
+    border-radius: 12px;
+    border: 0;
+    cursor: pointer;
+    box-shadow: 0 14px 34px rgba(79, 209, 197, 0.2);
+  }
+
+  .btn:hover {
+    background: #6fe0d5;
+    color: var(--brand-ink);
+  }
+
+  .btn-sm {
+    min-height: 44px;
+    padding: 12px 20px;
+    border-radius: 999px;
+    font-size: 0.84rem;
+    box-shadow: none;
+  }
+
+  .btn-ghost {
+    background: none;
+    color: var(--brand);
+    border: 1px solid rgba(79, 209, 197, 0.45);
+    box-shadow: none;
+  }
+
+  .btn-ghost:hover {
+    background: rgba(79, 209, 197, 0.12);
+    color: var(--brand);
+  }
+
+  /* layout and content structures */
+  .split {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: var(--gap);
+    max-width: 1120px;
+    margin-inline: auto;
+  }
+
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .num-list li {
+    display: flex;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 0.94rem;
+    line-height: 1.55;
+    color: var(--ink-2);
+  }
+
+  .num-list li:last-child {
+    border-bottom: 0;
+  }
+
+  .num-list b {
+    color: var(--brand);
+    font: 500 0.75rem/1.6 var(--display);
+    flex: none;
+  }
+
+  .cards {
+    display: grid;
+    gap: 18px;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  }
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 26px;
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(231, 238, 242, 0.1);
+    background: linear-gradient(150deg, rgba(79, 209, 197, 0.06), rgba(6, 11, 16, 0) 65%);
+  }
+
+  .card-title {
+    font-size: clamp(1.35rem, 2vw, 1.85rem);
+  }
+
+  .card-dl {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin: 6px 0 0;
+  }
+
+  .card-dd {
+    margin: 6px 0 0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  .card p {
+    font-size: 0.9rem;
+    line-height: 1.62;
+    color: var(--ink-3);
+  }
+
+  .tag {
+    align-self: flex-start;
+    font: 500 0.72rem/1 var(--display);
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--brand);
+    border: 1px solid rgba(79, 209, 197, 0.35);
+    border-radius: 999px;
+    padding: 7px 12px;
+  }
+
+  /* band cta */
+  .band {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 290px), 1fr));
+    gap: clamp(24px, 3vw, 48px);
+    align-items: center;
+    padding: clamp(24px, 3vw, 36px);
+    border-radius: var(--r-lg);
+    border: 1px solid rgba(79, 209, 197, 0.28);
+    background: linear-gradient(150deg, rgba(79, 209, 197, 0.12), rgba(6, 11, 16, 0) 70%);
+  }
+
+  /* floating whatsapp */
+  .wa-float {
+    position: fixed;
+    right: 16px;
+    bottom: 16px;
+    z-index: 70;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: #25d366;
+    color: #04211f;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+    transition: background-color 0.15s ease, transform 0.15s ease;
+  }
+
+  .wa-float:hover {
+    background: #3ce07a;
+    color: #04211f;
+    transform: scale(1.05);
+  }
+
+  .wa-float svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media print {
+    .wa-float {
+      display: none;
+    }
+    body {
+      background: #fff;
+      color: #000;
+    }
+  }
 </style>
