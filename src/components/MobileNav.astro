@@ -1,0 +1,457 @@
+---
+interface Props {
+  phone?: string;
+  phoneDisplay?: string;
+  whatsappUrl?: string;
+}
+
+const {
+  phone = "+5527992753921",
+  phoneDisplay = "(27) 99275-3921",
+  whatsappUrl = "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho.",
+} = Astro.props;
+
+const currentPath = Astro.url.pathname;
+const isLigamento = currentPath.startsWith('/ligamento-cruzado');
+const isInfiltracao = currentPath.startsWith('/acido-hialuronico');
+const isProtese = currentPath.startsWith('/protese-de-joelho');
+---
+
+<nav class="mobile-nav" aria-label="Navegação rápida">
+  <a
+    href="/ligamento-cruzado/"
+    class="mobile-nav-item"
+    aria-current={isLigamento ? 'page' : undefined}
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M8 3v5a4 4 0 0 0 8 0V3"></path>
+      <path d="M8 21v-5a4 4 0 0 1 8 0v5"></path>
+      <path d="m9 9 6 6"></path>
+      <path d="m15 9-6 6"></path>
+    </svg>
+    <span>Ligamento</span>
+  </a>
+
+  <a
+    href="/acido-hialuronico/"
+    class="mobile-nav-item"
+    aria-current={isInfiltracao ? 'page' : undefined}
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="m14 4 6 6"></path>
+      <path d="m17 7-9.5 9.5a2.12 2.12 0 0 1-1.5.6H3v-3c0-.55.22-1.07.6-1.46L13.1 9"></path>
+      <path d="m9 9 6 6"></path>
+      <path d="m5 19-3 3"></path>
+    </svg>
+    <span>Infiltração</span>
+  </a>
+
+  <a
+    href="/protese-de-joelho/"
+    class="mobile-nav-item"
+    aria-current={isProtese ? 'page' : undefined}
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <rect x="5" y="4" width="14" height="4" rx="2"></rect>
+      <rect x="6" y="16" width="12" height="4" rx="2"></rect>
+      <circle cx="12" cy="12" r="3"></circle>
+      <line x1="12" y1="8" x2="12" y2="9"></line>
+      <line x1="12" y1="15" x2="12" y2="16"></line>
+    </svg>
+    <span>Prótese</span>
+  </a>
+
+  <button
+    type="button"
+    class="mobile-nav-item"
+    id="mobile-menu-btn"
+    aria-expanded="false"
+    aria-controls="mobile-menu-dialog"
+  >
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <line x1="4" y1="6" x2="20" y2="6"></line>
+      <line x1="4" y1="12" x2="20" y2="12"></line>
+      <line x1="4" y1="18" x2="20" y2="18"></line>
+    </svg>
+    <span>Menu</span>
+  </button>
+</nav>
+
+<div
+  id="mobile-menu-dialog"
+  class="mobile-menu"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Menu principal"
+  hidden
+>
+  <div class="mobile-menu-header">
+    <div class="mobile-menu-brand">
+      <b>Dr. Bernardo Barroso</b>
+      <small>Cirurgia do Joelho · CRM 8842-ES</small>
+    </div>
+    <button
+      type="button"
+      id="mobile-menu-close"
+      class="mobile-menu-close"
+      aria-label="Fechar menu"
+    >
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+
+  <nav class="mobile-menu-nav" aria-label="Navegação secundária">
+    <a href="/" class="mobile-menu-link">Home</a>
+    <a href="/#sobre" class="mobile-menu-link">Sobre</a>
+    <div class="mobile-menu-group">
+      <a href="/#tratamentos" class="mobile-menu-link">Tratamentos</a>
+      <div class="mobile-menu-sublinks">
+        <a href="/ligamento-cruzado/" class="mobile-menu-sublink">Ligamento Cruzado Anterior</a>
+        <a href="/acido-hialuronico/" class="mobile-menu-sublink">Infiltração Ácido Hialurônico</a>
+        <a href="/protese-de-joelho/" class="mobile-menu-sublink">Prótese de Joelho</a>
+      </div>
+    </div>
+    <a href="/#convenios" class="mobile-menu-link">Convênios</a>
+    <a href="/#contato" class="mobile-menu-link">Contato</a>
+  </nav>
+
+  <div class="mobile-menu-footer">
+    <a href={`tel:${phone}`} class="mobile-menu-tel">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+      </svg>
+      {phoneDisplay}
+    </a>
+    <a
+      href={whatsappUrl}
+      class="btn"
+      target="_blank"
+      rel="noopener"
+      data-cta="whatsapp-menu-mobile"
+    >
+      <svg viewBox="0 0 24 24" fill="currentColor" width="19" height="19" aria-hidden="true">
+        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.53.05-1.02.24-3.44-.72-2.92-1.16-4.76-4.2-4.9-4.4-.14-.2-1.16-1.56-1.16-2.98 0-1.41.73-2.11 1-2.4.26-.29.58-.36.78-.36.19 0 .39 0 .56.01.19.01.44-.07.68.53.24.6.83 2.04.9 2.19.07.15.12.32.02.51-.1.2-.15.32-.29.49-.15.17-.31.39-.44.52-.15.15-.3.31-.13.6.17.29.75 1.25 1.61 2.02 1.11.99 2.04 1.3 2.33 1.45.29.15.46.12.63-.07.17-.2.73-.85.93-1.14.19-.29.39-.24.66-.15.27.1 1.7.8 1.99.95.29.15.48.22.55.34.07.13.07.75-.17 1.43Z"></path>
+      </svg>
+      Falar no WhatsApp
+    </a>
+  </div>
+</div>
+
+<script>
+  const menuBtn = document.getElementById('mobile-menu-btn');
+  const menuDialog = document.getElementById('mobile-menu-dialog');
+  const closeBtn = document.getElementById('mobile-menu-close');
+
+  function openMenu() {
+    if (!menuDialog || !menuBtn) return;
+    menuDialog.hidden = false;
+    menuDialog.offsetHeight; // force reflow
+    menuDialog.classList.add('is-open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+    closeBtn?.focus();
+  }
+
+  function closeMenu() {
+    if (!menuDialog || !menuBtn) return;
+    menuDialog.classList.remove('is-open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) {
+      menuDialog.hidden = true;
+      menuBtn.focus();
+    } else {
+      setTimeout(() => {
+        if (!menuDialog.classList.contains('is-open')) {
+          menuDialog.hidden = true;
+          menuBtn.focus();
+        }
+      }, 250);
+    }
+  }
+
+  if (menuBtn && menuDialog) {
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn?.addEventListener('click', closeMenu);
+
+    menuDialog.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        closeMenu();
+      });
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !menuDialog.hidden && menuDialog.classList.contains('is-open')) {
+        closeMenu();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900 && !menuDialog.hidden) {
+        closeMenu();
+      }
+    });
+  }
+</script>
+
+<style>
+  /* Esconde completamente no desktop (>900px) */
+  @media (min-width: 901px) {
+    .mobile-nav,
+    .mobile-menu {
+      display: none !important;
+    }
+  }
+
+  /* Aplicações específicas para mobile (<=900px) */
+  @media (max-width: 900px) {
+    :global(.burger) {
+      display: none !important;
+    }
+
+    :global(body) {
+      padding-bottom: calc(78px + env(safe-area-inset-bottom)) !important;
+    }
+
+    :global(.wa-float) {
+      bottom: calc(84px + env(safe-area-inset-bottom)) !important;
+    }
+  }
+
+  .mobile-nav {
+    position: fixed;
+    left: 12px;
+    right: 12px;
+    bottom: calc(12px + env(safe-area-inset-bottom));
+    z-index: 80;
+    max-width: 440px;
+    margin-inline: auto;
+    background: rgba(8, 15, 21, 0.88);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    border: 1px solid var(--line-2);
+    border-radius: var(--r-lg);
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(255, 255, 255, 0.04);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 6px 4px;
+  }
+
+  .mobile-nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    padding: 6px 2px;
+    border-radius: 12px;
+    color: var(--ink-3);
+    font-size: 0.69rem;
+    font-weight: 500;
+    font-family: var(--sans);
+    text-decoration: none;
+    background: none;
+    border: 0;
+    cursor: pointer;
+    transition: color 0.15s ease, background-color 0.15s ease;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-nav-item svg {
+    width: 20px;
+    height: 20px;
+    stroke: currentColor;
+    flex: none;
+    transition: transform 0.15s ease;
+  }
+
+  .mobile-nav-item:hover,
+  .mobile-nav-item:focus-visible {
+    color: var(--brand);
+  }
+
+  .mobile-nav-item[aria-current="page"] {
+    color: var(--brand);
+    font-weight: 600;
+  }
+
+  .mobile-nav-item[aria-current="page"] svg {
+    filter: drop-shadow(0 0 6px rgba(79, 209, 197, 0.4));
+  }
+
+  /* Menu em tela cheia */
+  .mobile-menu {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: rgba(6, 11, 16, 0.98);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    padding: max(18px, env(safe-area-inset-top)) 20px max(24px, env(safe-area-inset-bottom));
+    overflow-y: auto;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s ease, transform 0.25s ease, visibility 0.25s ease;
+  }
+
+  .mobile-menu.is-open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .mobile-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .mobile-menu-brand b {
+    display: block;
+    font: 600 1rem/1.2 var(--display);
+    color: var(--ink);
+  }
+
+  .mobile-menu-brand small {
+    display: block;
+    font-size: 0.69rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-4);
+  }
+
+  .mobile-menu-close {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid var(--line-2);
+    background: rgba(231, 238, 242, 0.05);
+    color: var(--ink);
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+    transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+
+  .mobile-menu-close:hover {
+    background: rgba(79, 209, 197, 0.12);
+    border-color: var(--brand);
+    color: var(--brand);
+  }
+
+  .mobile-menu-close svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .mobile-menu-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 16px 0;
+  }
+
+  .mobile-menu-link {
+    display: block;
+    padding: 12px 14px;
+    border-radius: 10px;
+    color: var(--ink);
+    font-family: var(--display);
+    font-size: 1.08rem;
+    font-weight: 500;
+    transition: background-color 0.15s ease, color 0.15s ease;
+  }
+
+  .mobile-menu-link:hover {
+    background: rgba(79, 209, 197, 0.08);
+    color: var(--brand);
+  }
+
+  .mobile-menu-group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-menu-sublinks {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding-left: 14px;
+    margin-bottom: 4px;
+    border-left: 2px solid var(--line);
+    margin-left: 14px;
+  }
+
+  .mobile-menu-sublink {
+    display: block;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: var(--ink-3);
+    font-size: 0.92rem;
+    line-height: 1.35;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+
+  .mobile-menu-sublink:hover {
+    color: var(--brand);
+    background: rgba(79, 209, 197, 0.06);
+  }
+
+  .mobile-menu-footer {
+    margin-top: auto;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mobile-menu-tel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    color: var(--ink-2);
+    font-size: 0.95rem;
+    text-decoration: none;
+  }
+
+  .mobile-menu-tel:hover {
+    color: var(--brand);
+  }
+
+  .mobile-menu-footer :global(.btn) {
+    width: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .mobile-menu {
+      transition: none;
+      transform: none;
+    }
+    .mobile-nav-item,
+    .mobile-nav-item svg {
+      transition: none;
+    }
+  }
+
+  @media print {
+    .mobile-nav,
+    .mobile-menu {
+      display: none !important;
+    }
+  }
+</style>
