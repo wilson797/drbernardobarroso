@@ -1,4 +1,5 @@
 ---
+import { WHATSAPP_URL } from '../data/contato';
 import Layout from '../layouts/Layout.astro';
 import Button from '../components/Button.astro';
 import Convenios from '../components/Convenios.astro';
@@ -10,7 +11,7 @@ const siteData = {
   ogImage: "https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp",
   phone: "+5527992753921",
   phoneDisplay: "(27) 99275-3921",
-  whatsappUrl: "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho."
+  whatsappUrl: WHATSAPP_URL
 };
 
 const jsonLd = {
@@ -135,7 +136,6 @@ const jsonLd = {
   schema={jsonLd}
   phone={siteData.phone}
   phoneDisplay={siteData.phoneDisplay}
-  whatsappUrl={siteData.whatsappUrl}
 >
   <main id="main">
     <section class="hero">

@@ -1,4 +1,5 @@
 ---
+import { MENSAGENS, whatsappUrl } from '../data/contato';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import FloatingWhatsApp from '../components/FloatingWhatsApp.astro';
@@ -14,7 +15,7 @@ interface Props {
   schema?: Record<string, any>;
   phone?: string;
   phoneDisplay?: string;
-  whatsappUrl?: string;
+  whatsappMensagem?: string;
   showFloatingWhatsapp?: boolean;
 }
 
@@ -28,9 +29,11 @@ const {
   schema,
   phone = "+5527992753921",
   phoneDisplay = "(27) 99275-3921",
-  whatsappUrl = "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho.",
+  whatsappMensagem = MENSAGENS.padrao,
   showFloatingWhatsapp = true
 } = Astro.props;
+
+const linkWhatsapp = whatsappUrl(whatsappMensagem);
 ---
 
 <!DOCTYPE html>
@@ -71,15 +74,15 @@ const {
 <body>
   <a class="skip" href="#main">Ir para o conteúdo</a>
 
-  <Header phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={whatsappUrl} />
+  <Header phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={linkWhatsapp} />
 
   <slot />
 
-  <Footer phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={whatsappUrl} />
+  <Footer phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={linkWhatsapp} />
 
-  {showFloatingWhatsapp && <FloatingWhatsApp whatsappUrl={whatsappUrl} />}
+  {showFloatingWhatsapp && <FloatingWhatsApp whatsappUrl={linkWhatsapp} />}
 
-  <MobileNav phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={whatsappUrl} />
+  <MobileNav phone={phone} phoneDisplay={phoneDisplay} whatsappUrl={linkWhatsapp} />
 
   <script>
     document.addEventListener('click', (e) => {

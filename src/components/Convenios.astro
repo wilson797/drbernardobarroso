@@ -1,4 +1,6 @@
 ---
+import { MENSAGENS, whatsappUrl } from '../data/contato';
+
 const convenios = [
   "ArcelorMittal",
   "Bradesco Saúde",
@@ -22,9 +24,6 @@ const formatter = new Intl.ListFormat("pt-BR", {
   type: "conjunction",
 });
 const fraseConvenios = formatter.format(convenios);
-
-const mensagem = "Olá, gostaria de confirmar se meu convênio é atendido pelo Dr. Bernardo Barroso.";
-const whatsappUrl = `https://wa.me/5527992753921?text=${encodeURIComponent(mensagem)}`;
 ---
 
 <section class="alt" id="convenios" aria-labelledby="convenios-titulo">
@@ -55,7 +54,7 @@ const whatsappUrl = `https://wa.me/5527992753921?text=${encodeURIComponent(mensa
         A cobertura pode variar conforme o plano, a unidade e o procedimento. Antes do agendamento, a secretaria confirma a cobertura e orienta sobre a autorização de cirurgias e procedimentos.
       </p>
       <a
-        href={whatsappUrl}
+        href={whatsappUrl(MENSAGENS.convenios)}
         class="btn btn-ghost"
         target="_blank"
         rel="noopener"

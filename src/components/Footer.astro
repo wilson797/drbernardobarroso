@@ -1,4 +1,5 @@
 ---
+import { WHATSAPP_URL } from '../data/contato';
 interface Props {
   phone?: string;
   phoneDisplay?: string;
@@ -8,7 +9,7 @@ interface Props {
 const {
   phone = "+5527992753921",
   phoneDisplay = "(27) 99275-3921",
-  whatsappUrl = "https://wa.me/5527992753921?text=Ol%C3%A1%2C%20gostaria%20de%20informa%C3%A7%C3%B5es%20sobre%20consulta%20com%20Dr.%20Bernardo%20Barroso%2C%20especialista%20em%20joelho."
+  whatsappUrl = WHATSAPP_URL
 } = Astro.props;
 
 const currentYear = new Date().getFullYear();
