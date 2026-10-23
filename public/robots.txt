@@ -13,4 +13,4 @@ Allow: /
 User-agent: Google-Extended
 Allow: /
 
-Sitemap: https://drbernardobarroso.com.br/sitemap.xml
+Sitemap: https://www.drbernardobarroso.com.br/sitemap.xml

@@ -7,7 +7,7 @@ import Convenios from '../components/Convenios.astro';
 const siteData = {
   title: "Ortopedista de Joelho em Vitória, Serra e Vila Velha | Dr. Bernardo Barroso",
   description: "Dr. Bernardo Barroso, ortopedista especialista em joelho em Vitória, Serra e Vila Velha (ES). Cirurgia de LCA, infiltração de ácido hialurônico e prótese de joelho. Agende pelo WhatsApp.",
-  canonical: "https://drbernardobarroso.com.br/",
+  url: new URL("/", Astro.site).href,
   ogImage: "https://res.cloudinary.com/dg9isyjhp/image/upload/v1788303443/foto-perfil-dr-bernardo-garcia-barroso-ortopedista-de-joelho-6a97580f919c6_zls0rg.webp",
   phone: "+5527992753921",
   phoneDisplay: "(27) 99275-3921",
@@ -19,11 +19,11 @@ const jsonLd = {
   "@graph": [
     {
       "@type": "Physician",
-      "@id": "https://drbernardobarroso.com.br/#physician",
+      "@id": "https://www.drbernardobarroso.com.br/#physician",
       "name": "Dr. Bernardo Garcia Barroso",
       "medicalSpecialty": "Orthopedic",
       "image": siteData.ogImage,
-      "url": siteData.canonical,
+      "url": siteData.url,
       "telephone": siteData.phone,
       "identifier": "CRM 8842-ES",
       "description": "Ortopedista especialista em cirurgias e tratamentos do joelho: artroscopia, reconstrução de LCA, menisco, cartilagem, infiltração de ácido hialurônico e prótese de joelho.",
@@ -46,41 +46,41 @@ const jsonLd = {
         {
           "@type": "MedicalProcedure",
           "name": "Reconstrução do Ligamento Cruzado Anterior (LCA)",
-          "url": "https://drbernardobarroso.com.br/ligamento-cruzado/"
+          "url": "https://www.drbernardobarroso.com.br/ligamento-cruzado/"
         },
         {
           "@type": "MedicalProcedure",
           "name": "Infiltração de ácido hialurônico no joelho (viscossuplementação)",
-          "url": "https://drbernardobarroso.com.br/acido-hialuronico/"
+          "url": "https://www.drbernardobarroso.com.br/acido-hialuronico/"
         },
         {
           "@type": "MedicalProcedure",
           "name": "Prótese de joelho (artroplastia)",
-          "url": "https://drbernardobarroso.com.br/protese-de-joelho/"
+          "url": "https://www.drbernardobarroso.com.br/protese-de-joelho/"
         }
       ]
     },
     {
       "@type": "WebSite",
-      "@id": "https://drbernardobarroso.com.br/#website",
-      "url": siteData.canonical,
+      "@id": "https://www.drbernardobarroso.com.br/#website",
+      "url": siteData.url,
       "name": "Dr. Bernardo Barroso — Cirurgia do Joelho",
       "inLanguage": "pt-BR",
-      "publisher": { "@id": "https://drbernardobarroso.com.br/#physician" }
+      "publisher": { "@id": "https://www.drbernardobarroso.com.br/#physician" }
     },
     {
       "@type": "WebPage",
-      "@id": "https://drbernardobarroso.com.br/#page",
-      "url": siteData.canonical,
+      "@id": "https://www.drbernardobarroso.com.br/#page",
+      "url": siteData.url,
       "name": "Ortopedista de Joelho em Vitória, Serra e Vila Velha",
-      "isPartOf": { "@id": "https://drbernardobarroso.com.br/#website" },
+      "isPartOf": { "@id": "https://www.drbernardobarroso.com.br/#website" },
       "inLanguage": "pt-BR",
       "dateModified": "2026-09-12",
-      "about": { "@id": "https://drbernardobarroso.com.br/#physician" }
+      "about": { "@id": "https://www.drbernardobarroso.com.br/#physician" }
     },
     {
       "@type": "FAQPage",
-      "@id": "https://drbernardobarroso.com.br/#faq",
+      "@id": "https://www.drbernardobarroso.com.br/#faq",
       "mainEntity": [
         {
           "@type": "Question",
@@ -131,7 +131,6 @@ const jsonLd = {
 <Layout
   title={siteData.title}
   description={siteData.description}
-  canonical={siteData.canonical}
   ogImage={siteData.ogImage}
   schema={jsonLd}
   phone={siteData.phone}
