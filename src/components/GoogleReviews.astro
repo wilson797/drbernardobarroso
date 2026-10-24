@@ -59,6 +59,27 @@ const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
 </script>
 
 <style>
+  #avaliacoes {
+    background: #ffffff;
+    border-top-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .eyebrow {
+    color: #5b6b73;
+  }
+
+  h2 {
+    color: #0b1215;
+  }
+
+  .lede {
+    color: #3d4a50;
+  }
+
+  a:focus-visible {
+    outline-color: #0f766e;
+  }
+
   .reviews-container {
     display: flex;
     flex-direction: column;
@@ -72,25 +93,20 @@ const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
 
   .reviews-widget {
     min-height: 420px;
-    padding: clamp(16px, 3vw, 32px);
-    border-radius: var(--r-lg);
-    background: #ffffff;
-    color: #111;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
   }
 
   .reviews-link {
     align-self: flex-start;
-    color: var(--brand);
+    color: #0f766e;
     font-size: 0.94rem;
     font-weight: 500;
     text-decoration: underline;
     text-underline-offset: 4px;
-    text-decoration-color: var(--brand-line);
+    text-decoration-color: rgba(15, 118, 110, 0.35);
   }
 
   .reviews-link:hover {
-    color: var(--brand-lite);
+    color: #115e59;
     text-decoration-color: currentColor;
   }
 
