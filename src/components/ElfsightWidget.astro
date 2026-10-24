@@ -1,0 +1,70 @@
+---
+interface Props {
+  appId: string;
+  minHeight: {
+    desktop: number;
+    mobile: number;
+  };
+}
+
+const { appId, minHeight } = Astro.props;
+---
+
+<div
+  class="elfsight-widget"
+  data-elfsight
+  style={`--elfsight-min-desktop:${minHeight.desktop}px;--elfsight-min-mobile:${minHeight.mobile}px`}
+>
+  <div class={`elfsight-app-${appId}`} data-elfsight-app-lazy></div>
+</div>
+
+<script>
+  const ELFSIGHT_SRC = 'https://elfsightcdn.com/platform.js';
+
+  function loadElfsight() {
+    if (document.querySelector(`script[src="${ELFSIGHT_SRC}"]`)) return;
+    const script = document.createElement('script');
+    script.src = ELFSIGHT_SRC;
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  function observeWidgets() {
+    const containers = document.querySelectorAll('[data-elfsight]');
+    if (!containers.length) return;
+
+    if (!('IntersectionObserver' in window)) {
+      loadElfsight();
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          loadElfsight();
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '600px 0px' }
+    );
+    containers.forEach((container) => observer.observe(container));
+  }
+
+  if (document.readyState === 'complete') {
+    observeWidgets();
+  } else {
+    window.addEventListener('load', observeWidgets, { once: true });
+  }
+</script>
+
+<style>
+  .elfsight-widget {
+    min-height: var(--elfsight-min-desktop);
+  }
+
+  @media (max-width: 900px) {
+    .elfsight-widget {
+      min-height: var(--elfsight-min-mobile);
+    }
+  }
+</style>

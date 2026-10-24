@@ -1,0 +1,64 @@
+---
+import ElfsightWidget from './ElfsightWidget.astro';
+
+const instagramUrl = "https://www.instagram.com/bernardogarciabarroso/";
+---
+
+<section id="instagram" aria-labelledby="instagram-titulo">
+  <div class="wrap instagram-container">
+    <h2 id="instagram-titulo" class="sr-only">Instagram do Dr. Bernardo Barroso</h2>
+
+    <ElfsightWidget
+      appId="cd70f833-2a8e-48e5-a6f3-5c6354ed823e"
+      minHeight={{ desktop: 640, mobile: 760 }}
+    />
+
+    <a
+      href={instagramUrl}
+      class="instagram-link"
+      target="_blank"
+      rel="noopener"
+    >
+      Ver perfil completo no Instagram
+    </a>
+  </div>
+</section>
+
+<style>
+  #instagram {
+    background: var(--bg);
+  }
+
+  .instagram-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(20px, 3vw, 32px);
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .instagram-link {
+    align-self: center;
+    color: var(--brand);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--brand-line);
+  }
+
+  .instagram-link:hover {
+    color: var(--brand-lite);
+    text-decoration-color: currentColor;
+  }
+</style>

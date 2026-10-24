@@ -1,4 +1,6 @@
 ---
+import ElfsightWidget from './ElfsightWidget.astro';
+
 const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
 ---
 
@@ -12,9 +14,10 @@ const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
       </p>
     </div>
 
-    <div class="reviews-widget" data-reviews>
-      <div class="elfsight-app-35119da1-eedd-4784-a41d-b6f155f74855" data-elfsight-app-lazy></div>
-    </div>
+    <ElfsightWidget
+      appId="35119da1-eedd-4784-a41d-b6f155f74855"
+      minHeight={{ desktop: 420, mobile: 560 }}
+    />
 
     <a
       href={googleReviewsUrl}
@@ -26,37 +29,6 @@ const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
     </a>
   </div>
 </section>
-
-<script>
-  const ELFSIGHT_SRC = 'https://elfsightcdn.com/platform.js';
-
-  function loadElfsight() {
-    if (document.querySelector(`script[src="${ELFSIGHT_SRC}"]`)) return;
-    const script = document.createElement('script');
-    script.src = ELFSIGHT_SRC;
-    script.async = true;
-    document.head.appendChild(script);
-  }
-
-  const container = document.querySelector('[data-reviews]');
-
-  if (container) {
-    if ('IntersectionObserver' in window) {
-      const observer = new IntersectionObserver(
-        (entries) => {
-          if (entries.some((entry) => entry.isIntersecting)) {
-            loadElfsight();
-            observer.disconnect();
-          }
-        },
-        { rootMargin: '600px 0px' }
-      );
-      observer.observe(container);
-    } else {
-      loadElfsight();
-    }
-  }
-</script>
 
 <style>
   #avaliacoes {
@@ -91,10 +63,6 @@ const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
     max-width: 780px;
   }
 
-  .reviews-widget {
-    min-height: 420px;
-  }
-
   .reviews-link {
     align-self: flex-start;
     color: #0f766e;
@@ -108,11 +76,5 @@ const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
   .reviews-link:hover {
     color: #115e59;
     text-decoration-color: currentColor;
-  }
-
-  @media (max-width: 900px) {
-    .reviews-widget {
-      min-height: 560px;
-    }
   }
 </style>
