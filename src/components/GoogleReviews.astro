@@ -1,0 +1,97 @@
+---
+const googleReviewsUrl = "COLE_AQUI_O_LINK_DO_GOOGLE";
+---
+
+<section id="avaliacoes" aria-labelledby="avaliacoes-titulo">
+  <div class="wrap reviews-container">
+    <div class="stack reviews-header">
+      <p class="eyebrow">Avaliações</p>
+      <h2 id="avaliacoes-titulo">Avaliações de pacientes no Google</h2>
+      <p class="lede">
+        Veja o que pacientes atendidos em Vitória, Serra e Vila Velha dizem sobre o atendimento do Dr. Bernardo Barroso.
+      </p>
+    </div>
+
+    <div class="reviews-widget" data-reviews>
+      <div class="elfsight-app-35119da1-eedd-4784-a41d-b6f155f74855" data-elfsight-app-lazy></div>
+    </div>
+
+    <a
+      href={googleReviewsUrl}
+      class="reviews-link"
+      target="_blank"
+      rel="noopener"
+    >
+      Ver todas as avaliações no Google
+    </a>
+  </div>
+</section>
+
+<script>
+  const ELFSIGHT_SRC = 'https://elfsightcdn.com/platform.js';
+
+  function loadElfsight() {
+    if (document.querySelector(`script[src="${ELFSIGHT_SRC}"]`)) return;
+    const script = document.createElement('script');
+    script.src = ELFSIGHT_SRC;
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  const container = document.querySelector('[data-reviews]');
+
+  if (container) {
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          if (entries.some((entry) => entry.isIntersecting)) {
+            loadElfsight();
+            observer.disconnect();
+          }
+        },
+        { rootMargin: '600px 0px' }
+      );
+      observer.observe(container);
+    } else {
+      loadElfsight();
+    }
+  }
+</script>
+
+<style>
+  .reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(28px, 4vw, 44px);
+  }
+
+  .reviews-header {
+    gap: 12px;
+    max-width: 780px;
+  }
+
+  .reviews-widget {
+    min-height: 420px;
+  }
+
+  .reviews-link {
+    align-self: flex-start;
+    color: var(--brand);
+    font-size: 0.94rem;
+    font-weight: 500;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: var(--brand-line);
+  }
+
+  .reviews-link:hover {
+    color: var(--brand-lite);
+    text-decoration-color: currentColor;
+  }
+
+  @media (max-width: 900px) {
+    .reviews-widget {
+      min-height: 560px;
+    }
+  }
+</style>
